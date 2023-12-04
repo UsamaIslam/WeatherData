@@ -35,7 +35,7 @@ class QuizApplicationTests {
 				.thenReturn(Mono.just(mockWeatherData));
 
 		webTestClient.get()
-				.uri("/weather")
+				.uri("/weather?latitude={latitude}&longitude={longitude}", latitude, longitude)
 				.exchange()
 				.expectStatus().isOk()
 				.expectHeader().contentType(MediaType.APPLICATION_JSON)
